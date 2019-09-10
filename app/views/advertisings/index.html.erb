@@ -1,0 +1,21 @@
+<h1>Listing advertisings</h1>
+<%= link_to 'New advertising', new_advertising_path %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+
+  <% @advertisings.each do |advertising| %>
+    <tr>
+      <td><%= advertising.title %></td>
+      <td><%= advertising.text %></td>
+      <td><%= link_to 'Show', advertising_path(advertising) %></td>
+      <td><%= link_to 'Edit', edit_advertising_path(advertising) %></td>
+      <td><%= link_to 'Destroy', advertising_path(advertising),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
