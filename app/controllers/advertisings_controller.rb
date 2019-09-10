@@ -17,8 +17,7 @@ class AdvertisingsController < ApplicationController
   end
 
   def create
-    @advertising = Advertising.new(advertising_params)
-
+    @advertising = Advertising.create!(advertising_params)
     if @advertising.save
       redirect_to @advertising
     else
@@ -46,7 +45,7 @@ class AdvertisingsController < ApplicationController
 private
 
   def advertising_params
-    params.require(:advertising).permit(:title, :text)
+    params.require(:advertising).permit(:title, :text, images: [])
   end
 
 end
