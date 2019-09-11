@@ -1,3 +1,5 @@
+
+
 <h1>Listing advertisings</h1>
 <%= link_to 'New advertising', new_advertising_path %>
 <table>
@@ -19,3 +21,5 @@
     </tr>
   <% end %>
 </table>
+
+<%= will_paginate @advertising, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
