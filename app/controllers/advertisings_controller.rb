@@ -1,7 +1,7 @@
 class AdvertisingsController < ApplicationController
 
   def index
-    @advertisings = Advertising.all
+    @advertisings = Advertising.paginate(:page => params[:page], per_page: 2)
   end
 
   def show
