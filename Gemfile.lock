@@ -58,6 +58,10 @@ GEM
     administrate-field-active_storage (0.1.8)
       administrate (>= 0.2.0.rc1)
       rails (>= 5.2)
+    administrate-field-enumerize (1.0.0)
+      administrate (~> 0.8)
+      enumerize (~> 2.1)
+      rails (>= 5.0.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -97,6 +101,8 @@ GEM
     crass (1.0.4)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
+    enumerize (2.3.1)
+      activesupport (>= 3.2)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.11.1)
@@ -249,6 +255,7 @@ PLATFORMS
 DEPENDENCIES
   administrate
   administrate-field-active_storage (~> 0.1.8)
+  administrate-field-enumerize
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.4.1)
@@ -256,6 +263,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  enumerize
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
