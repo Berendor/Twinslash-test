@@ -12,9 +12,22 @@
  *
 
  */
- @import "bootstrap";
 
 img {
   height: 300px;
   width: 300px;
+}
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.advertising-body {
+ border-top: 1px solid #eaeaea;
+ padding-top: 15px;
+ padding-bottom: 15px;
+}
+
+.advertising-title {
+ font-weight: bold;
+ font-size: 1.5em;
 }
