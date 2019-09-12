@@ -1,24 +1,5 @@
-<% if @advertising.errors.any? %>
- <div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
-   <div class="panel panel-danger">
-    <div class="panel-heading">
-     <h2 class="panel-title">
-      <%= pluralize(@advertising.errors.count, "error") %>
-      prohibited this advertising from being saved:
-     </h2>
-     <div class="panel-body">
-      <ul>
-       <% @advertising.errors.full_messages.each do |msg|%>
-        <li><%= msg %></li>
-       <% end %>
-      </ul>
-     </div>
-    </div>
-   </div>
-  </div>
- </div>
-<% end %>
+<%= render 'errors_advertising', advertising: @advertising %>
+
 
   <div class="row">
  <div class="col-xs-12">
