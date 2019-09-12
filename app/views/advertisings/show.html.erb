@@ -14,6 +14,9 @@
   <br>
   <% @advertising.images.each do |image| %>
     <%= image_tag(image) %>
+    <%= link_to 'Remove', delete_image_attachment_advertising_url(image),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?'} %>
   <% end %>
 </p>
 <% end %>
