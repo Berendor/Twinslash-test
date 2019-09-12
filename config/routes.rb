@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :advertisings
+  resources :advertisings do
+    member do
+      delete :delete_image_attachment
+    end
+  end
 
   get 'homepage/index'
   root 'homepage#index'

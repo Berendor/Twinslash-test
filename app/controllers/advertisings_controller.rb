@@ -42,6 +42,13 @@ class AdvertisingsController < ApplicationController
     redirect_to advertisings_path
   end
 
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+
+    redirect_back(fallback_location: advertising_path)
+  end
+
 private
 
   def advertising_params
