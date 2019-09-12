@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :advertisings
+      resources :users
+
+      root to: "advertisings#index"
+    end
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
