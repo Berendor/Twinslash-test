@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   namespace :admin do
       resources :advertisings
       resources :users
 
       root to: "advertisings#index"
     end
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
 
   resources :advertisings do
     member do

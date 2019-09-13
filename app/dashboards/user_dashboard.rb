@@ -12,10 +12,13 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     username: Field::String,
     email: Field::String,
-    password_digest: Field::String,
+    encrypted_password: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    role: Field::Enumerize
+    role: Field::Enumerize,
+    reset_password_token: Field::String,
+    reset_password_sent_at: Field::DateTime,
+    remember_created_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,7 +28,6 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   advertisings
-  role
   id
   username
   email
@@ -34,25 +36,27 @@ class UserDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  role
   advertisings
   id
   username
   email
-  password_digest
+  encrypted_password
   created_at
   updated_at
+  role
+  remember_created_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  role
   advertisings
   username
   email
-  password_digest
+  encrypted_password
+  role
+  remember_created_at
   ].freeze
 
   # COLLECTION_FILTERS
