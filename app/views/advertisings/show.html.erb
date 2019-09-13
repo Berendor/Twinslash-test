@@ -1,22 +1,25 @@
 <h2 align="center">Title: <%= @advertising.title %></h2>
 <div class="well col-xs-8 col-xs-offset-2">
-  <p>Username:<%= @advertising.user.username %></p>
+  <p>Email:<%= @advertising.user.email %></p>
  <h4 class="center"><strong>Text:</strong></h4>
  <%= @advertising.text %>
  <hr>
+ <div class='row' align='center'>
  <% if @advertising.images.attached? %>
- <p>
    <strong>Images:</strong>
    <br>
+   <div>
    <% @advertising.images.each do |image| %>
    <%= image_tag(image) %>
-   <%= link_to 'Remove', delete_image_attachment_advertising_url(image),
+   <h2><%= link_to 'Remove', delete_image_attachment_advertising_url(image),
    method: :delete,
-   data: { confirm: 'Are you sure?'} %>
+   data: { confirm: 'Are you sure?'} %></h2>
    <% end %>
- </p>
+   </div>
+ </div>
  <% end %>
 
+<br>
  <%= link_to 'Edit', edit_advertising_path(@advertising), class: 'btn btn-primary btn-xs' %>
  <%= link_to 'Back', advertisings_path, class: 'btn btn-primary btn-xs' %>
  <%= link_to 'Delete', advertising_path(@advertising), method: :delete, data: { confirm: "Are you sure you want to delete this article?"}, class: "btn btn-xs btn-danger" %>
