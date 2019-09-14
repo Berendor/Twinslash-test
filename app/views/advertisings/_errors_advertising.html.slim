@@ -1,0 +1,13 @@
+- if @advertising.errors.any?
+  .row
+    .col-xs-8.col-xs-offset-2
+      .panel.panel-danger
+        .panel-heading
+          h2.panel-title
+            = pluralize(@advertising.errors.count, "error")
+            |  prohibited this advertising from being saved: 
+          .panel-body
+            ul
+              - @advertising.errors.full_messages.each do |msg|
+                li
+                  = msg

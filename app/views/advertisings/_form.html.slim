@@ -1,0 +1,23 @@
+= render 'errors_advertising', advertising: @advertising
+.row
+  .col-xs-12
+    = form_for(@advertising, :html => {class: "form-horizontal", role: "form"}) do |f|
+      .form-group
+        .control-label.col-sm-2
+          = f.label :title
+        .col-sm-6
+          = f.text_field :title, class: "form-control", placeholder: "Title of advertising", autofocus: true
+      .form-group
+        .control-label.col-sm-2
+          = f.label :text
+        .col-sm-6
+          = f.text_area :text, rows: 10, class: "form-control", placeholder: "Body of advertising"
+      .form-group
+        .control-label.col-sm-2
+          = f.label :images
+        .col-sm-6
+          = f.file_field :images, multiple: true, rows: 10, class: "form-control", placeholder: "Body of advertising"
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit class: 'btn btn-primary btn-large'
+          = link_to 'Back', advertisings_path, class: 'btn btn-primary btn-large'
