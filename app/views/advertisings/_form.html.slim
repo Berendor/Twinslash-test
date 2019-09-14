@@ -14,6 +14,11 @@
           = f.text_area :text, rows: 10, class: "form-control", placeholder: "Body of advertising"
       .form-group
         .control-label.col-sm-2
+          = f.label :advertisings_type
+        .col-sm-6
+          = f.select :advertisings_type, options_for_select( AdvertisingsType.all.collect { |type| ["#{type.name}"] } ), class: 'form-control'
+      .form-group
+        .control-label.col-sm-2
           = f.label :images
         .col-sm-6
           = f.file_field :images, multiple: true, rows: 10, class: "form-control", placeholder: "Body of advertising"
