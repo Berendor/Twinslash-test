@@ -17,6 +17,7 @@ class AdvertisingsController < ApplicationController
   end
 
   def create
+    # @types = AdvertisingsType.all
     @advertising = Advertising.new(advertising_params)
     @advertising.user = current_user
     if @advertising.save
@@ -53,7 +54,7 @@ class AdvertisingsController < ApplicationController
 private
 
   def advertising_params
-    params.require(:advertising).permit(:title, :text, images: [])
+    params.require(:advertising).permit(:title, :text, :advertisings_type, images: [])
   end
 
 end
