@@ -28,3 +28,24 @@ advertisings_type = [
 
 User.create(user)
 AdvertisingsType.create(advertisings_type)
+
+
+50.times do
+  Advertising.create(
+    advertisings_type: "house",
+    user_id: 1,
+    title: Faker::Hipster.sentence,
+    status: "published",
+    text: Faker::Hipster.paragraphs(6)
+  )
+end
+
+20.times do
+  Advertising.create(
+    advertisings_type: "car",
+    user_id: 2,
+    title: Faker::Hipster.sentence,
+    text: Faker::Hipster.paragraphs(6),
+    status: "draft"
+  )
+end
