@@ -1,7 +1,14 @@
 class AdvertisingsController < ApplicationController
 
   def index
-    @advertisings = Advertising.paginate(:page => params[:page], per_page: 4)
+    if params[:search]
+      @search_results_advertisings = Advertising.search_by_title_and_text(params[:search])
+      respond_to do |format|
+        format.js { render partial: 'search-results'}
+      end
+    else
+      @advertisings = Advertising.where(status: 'published').paginate(:page => params[:page], per_page: 4)
+    end
   end
 
   def show
