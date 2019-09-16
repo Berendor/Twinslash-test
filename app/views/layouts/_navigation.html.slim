@@ -7,13 +7,9 @@ nav.navbar.navbar-default
         li
           a href="/admin"  admin
         li
-          = form_tag(advertisings_path, method: "get", remote: true) do
+          = form_tag(advertisings_path, method: "get", remote: true,) do
             = text_field_tag :search, params[:search], placeholder: "Enter search term"
             = submit_tag "Search"
-
-          / form.form-inline
-          /   input.form-control.mr-sm-2 aria-label="Search" placeholder="Search" type="search" /
-          /   button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  Search
         li.dropdown
           a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             | Advertising
@@ -35,7 +31,7 @@ nav.navbar.navbar-default
               span.caret
             ul.dropdown-menu
               li
-                a href="#"  Action
+                = link_to 'MY PROFILE',  user_path(current_user)
               li
                 a href="#"  Another action
         - else

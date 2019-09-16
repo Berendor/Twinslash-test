@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @q =  Advertising.ransack(params[:q])
+    @advertisings = @q.result.where(:user_id == current_user)
   end
 
   # GET /users/new

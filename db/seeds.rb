@@ -30,9 +30,9 @@ User.create(user)
 AdvertisingsType.create(advertisings_type)
 
 
-50.times do
+5.times do
   Advertising.create(
-    advertisings_type: "house",
+    advertisings_type_id: 2,
     user_id: 1,
     title: Faker::Hipster.sentence,
     status: "published",
@@ -40,9 +40,29 @@ AdvertisingsType.create(advertisings_type)
   )
 end
 
-20.times do
+5.times do
   Advertising.create(
-    advertisings_type: "car",
+    advertisings_type_id: 1,
+    user_id: 1,
+    title: Faker::Hipster.sentence,
+    status: "published",
+    text: Faker::Hipster.paragraphs(6)
+  )
+end
+
+5.times do
+  Advertising.create(
+    advertisings_type_id: 1,
+    user_id: 3,
+    title: Faker::Hipster.sentence,
+    status: "draft",
+    text: Faker::Hipster.paragraphs(6)
+  )
+end
+
+5.times do
+  Advertising.create(
+    advertisings_type_id: 1,
     user_id: 2,
     title: Faker::Hipster.sentence,
     text: Faker::Hipster.paragraphs(6),

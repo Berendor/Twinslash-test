@@ -13,7 +13,7 @@ class AdvertisingDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     text: Field::Text,
-    advertisings_type: Field::String,
+    advertisings_type_id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,7 +25,7 @@ class AdvertisingDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   title
-  advertisings_type
+  advertisings_type_id
   status
   user
   ].freeze
@@ -33,7 +33,7 @@ class AdvertisingDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  advertisings_type
+  advertisings_type_id
   status
   user
   id

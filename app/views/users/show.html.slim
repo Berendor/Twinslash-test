@@ -1,13 +1,13 @@
-p#notice
-  = notice
-p
-  strong
-    | Username:
-  = @user.username
-p
-  strong
-    | Email:
-  = @user.email
-= link_to 'Edit', edit_user_path(@user)
-|  | 
-= link_to 'Back', users_path
+- @advertisings.each do |advertising|
+  .row
+    .col-xs-8.col-xs-offset-2
+      .well.well-lg
+        .article-title
+          = link_to advertising.title, advertising_path(advertising)
+        .advertising-body
+          = truncate(advertising.text, length: 100)
+        .advertising-actions
+          = link_to 'Show', advertising_path(advertising),class: 'btn btn-primary btn-xs'
+          - if current_user
+            = link_to "Edit", edit_advertising_path(advertising), class: "btn btn-xs btn-primary"
+            = link_to "Delete", advertising_path(advertising), method: :delete, data: { confirm: "Are you sure you want to delete this?"}, class: "btn btn-xs btn-danger"
