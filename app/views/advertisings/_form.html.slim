@@ -16,7 +16,7 @@
         .control-label.col-sm-2
           = f.label :advertisings_type
         .col-sm-6
-          = f.select :advertisings_type, options_for_select( AdvertisingsType.all.collect { |type| ["#{type.name}"] } ), class: 'form-control'
+          = f.select :advertisings_type_id, get_advertisings_types(@types), class: 'form-control'
       .form-group
         .control-label.col-sm-2
           = f.label :images

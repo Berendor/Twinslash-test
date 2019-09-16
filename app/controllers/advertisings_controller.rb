@@ -1,30 +1,35 @@
 class AdvertisingsController < ApplicationController
 
   def index
+    @types = AdvertisingsType.all
+    @q =  Advertising.ransack(params[:q])
     if params[:search]
       @search_results_advertisings = Advertising.search_by_title_and_text(params[:search])
       respond_to do |format|
         format.js { render partial: 'search-results'}
       end
     else
-      @advertisings = Advertising.where(status: 'published').paginate(:page => params[:page], per_page: 4)
+      @advertisings = @q.result.where(status: 'published').paginate(:page => params[:page], per_page: 4)
     end
   end
 
   def show
     @advertising = Advertising.find(params[:id])
+    @types = AdvertisingsType.all
   end
 
   def new
     @advertising = Advertising.new
+    @types = AdvertisingsType.all
   end
 
   def edit
     @advertising = Advertising.find(params[:id])
+    @types = AdvertisingsType.all
   end
 
   def create
-    # @types = AdvertisingsType.all
+    @types = AdvertisingsType.all
     @advertising = Advertising.new(advertising_params)
     @advertising.user = current_user
     if @advertising.save
@@ -36,7 +41,7 @@ class AdvertisingsController < ApplicationController
 
   def update
     @advertising = Advertising.find(params[:id])
-
+    @types = AdvertisingsType.all
     if @advertising.update(advertising_params)
       redirect_to @advertising
     else
@@ -58,10 +63,13 @@ class AdvertisingsController < ApplicationController
     redirect_back(fallback_location: advertising_path)
   end
 
+  def update_ad
+    @advertising = Advertising.find(params[:id]).update(status: "new")
+  end
 private
 
   def advertising_params
-    params.require(:advertising).permit(:title, :text, :advertisings_type, images: [])
+    params.require(:advertising).permit(:title, :text, :advertisings_type_id, images: [])
   end
 
 end

@@ -1,0 +1,5 @@
+.row
+  = search_form_for @q, builder: SimpleForm::FormBuilder, wrapper: :horizontal_form, html: { class: 'form-horizontal'} do |f|
+    .col-md-3
+      = f.input :advertisings_type_id_eq, collection: AdvertisingsType.all, label: 'category', required: false
+    = f.button :submit, 'search', class: 'btn btn-primary'

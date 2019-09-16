@@ -3,7 +3,7 @@ class CreateAdvertisings < ActiveRecord::Migration[5.2]
     create_table :advertisings do |t|
       t.string :title
       t.text :text
-
+      t.belongs_to :advertisings_type
       t.timestamps
     end
   end
