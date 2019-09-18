@@ -13,6 +13,6 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
 
-  enumerize :role, in: [:user, :admin], default: :user
+  enumerize :role, in: [:user, :admin, :unlogged], default: :user
 
 end

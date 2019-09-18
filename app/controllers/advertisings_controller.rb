@@ -1,5 +1,5 @@
 class AdvertisingsController < ApplicationController
-
+  load_and_authorize_resource
   def index
     @types = AdvertisingsType.all
     @q =  Advertising.ransack(params[:q])
@@ -24,8 +24,12 @@ class AdvertisingsController < ApplicationController
   end
 
   def edit
-    @advertising = Advertising.find(params[:id])
-    @types = AdvertisingsType.all
+    if creator
+      @advertising = Advertising.find(params[:id])
+      @types = AdvertisingsType.all
+    else
+      redirect_back(fallback_location: advertising_path)
+    end
   end
 
   def create

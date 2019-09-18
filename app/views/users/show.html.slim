@@ -1,4 +1,4 @@
-- @advertisings.each do |advertising|
+- @my_advertisings.each do |advertising|
   .row
     .col-xs-8.col-xs-offset-2
       .well.well-lg
@@ -6,6 +6,8 @@
           = link_to advertising.title, advertising_path(advertising)
         .advertising-body
           = truncate(advertising.text, length: 100)
+        .advertising-body
+          = truncate(advertising.status)
         .advertising-actions
           = link_to 'Show', advertising_path(advertising),class: 'btn btn-primary btn-xs'
           - if current_user

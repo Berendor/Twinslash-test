@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  load_and_authorize_resource
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @q =  Advertising.ransack(params[:q])
-    @advertisings = @q.result.where(:user_id == current_user)
+    @my_advertisings = Advertising.where(user_id: current_user.id)
   end
 
   # GET /users/new
