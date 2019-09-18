@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # All Administrate controllers inherit from this `Admin::ApplicationController`,
 # making it the ideal place to put authentication logic or other
 # before_actions.
@@ -10,10 +12,10 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-       if current_user.role == 'admin'
+      if current_user.role == 'admin'
       else
         redirect_to '/'
-      end
+     end
     end
 
     # Override this value to specify the number of elements to display at a time

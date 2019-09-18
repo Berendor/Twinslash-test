@@ -21,8 +21,8 @@ h2[align="center"]
       div
         - @advertising.images.each do |image|
           = image_tag(image)
-          h2
-            = link_to 'Remove', delete_image_attachment_advertising_url(image), method: :delete, data: { confirm: 'Are you sure?'}
+          / h2
+          /   = link_to 'Remove', delete_image_attachment_advertising_url(image), method: :delete, data: { confirm: 'Are you sure?'}
   br
   = link_to 'Back', advertisings_path, class: 'btn btn-primary btn-xs'
   - if @advertising.status['draft']

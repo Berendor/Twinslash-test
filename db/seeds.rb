@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -29,13 +31,12 @@ advertisings_type = [
 User.create(user)
 AdvertisingsType.create(advertisings_type)
 
-
 5.times do
   Advertising.create(
     advertisings_type_id: 2,
     user_id: 1,
     title: Faker::Hipster.sentence,
-    status: "published",
+    status: 'published',
     text: Faker::Hipster.paragraphs(6)
   )
 end
@@ -45,7 +46,7 @@ end
     advertisings_type_id: 1,
     user_id: 1,
     title: Faker::Hipster.sentence,
-    status: "published",
+    status: 'published',
     text: Faker::Hipster.paragraphs(6)
   )
 end
@@ -55,7 +56,7 @@ end
     advertisings_type_id: 1,
     user_id: 3,
     title: Faker::Hipster.sentence,
-    status: "draft",
+    status: 'draft',
     text: Faker::Hipster.paragraphs(6)
   )
 end
@@ -66,6 +67,6 @@ end
     user_id: 2,
     title: Faker::Hipster.sentence,
     text: Faker::Hipster.paragraphs(6),
-    status: "draft"
+    status: 'draft'
   )
 end

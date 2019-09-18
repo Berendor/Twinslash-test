@@ -26,3 +26,13 @@
         .col-sm-offset-2.col-sm-10
           = f.submit class: 'btn btn-primary btn-large'
           = link_to 'Back', advertisings_path, class: 'btn btn-primary btn-large'
+      .row[align="center"]
+        - if @advertising.images.attached?
+          strong
+            | Images:
+          br
+          div
+            - @advertising.images.each do |image|
+              = image_tag(image)
+              h2
+                = link_to 'Remove', delete_image_attachment_advertising_url(image), method: :delete, data: { confirm: 'Are you sure?'}
