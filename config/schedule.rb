@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -18,10 +20,10 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :day, :at => "0:00 am" do
-  rake "event:publish"
+every :day, at: '0:00 am' do
+  rake 'event:publish'
 end
 
-every 3.day  do
-  rake "event:archive"
+every 3.day do
+  rake 'event:archive'
 end

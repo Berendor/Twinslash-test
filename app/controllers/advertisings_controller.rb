@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class AdvertisingsController < ApplicationController
   load_and_authorize_resource
   def index
     @types = AdvertisingsType.all
-    @q =  Advertising.ransack(params[:q])
+    @q = Advertising.ransack(params[:q])
     if params[:search]
       @search_results_advertisings = Advertising.search_by_title_and_text(params[:search])
       respond_to do |format|
-        format.js { render partial: 'search-results'}
+        format.js { render partial: 'search-results' }
       end
     else
-      @advertisings = @q.result.where(status: 'published').paginate(:page => params[:page], per_page: 4)
+      @advertisings = @q.result.where(status: 'published').paginate(page: params[:page], per_page: 4)
     end
   end
 
@@ -54,10 +56,13 @@ class AdvertisingsController < ApplicationController
   end
 
   def destroy
-    @advertising = Advertising.find(params[:id])
-    @advertising.destroy
-
-    redirect_to advertisings_path
+    if creator
+      @advertising = Advertising.find(params[:id])
+      @advertising.destroy
+      redirect_to advertisings_path
+    else
+      redirect_back(fallback_location: advertising_path)
+    end
   end
 
   def delete_image_attachment
@@ -68,12 +73,12 @@ class AdvertisingsController < ApplicationController
   end
 
   def update_ad
-    @advertising = Advertising.find(params[:id]).update(status: "new")
+    @advertising = Advertising.find(params[:id]).update(status: 'new')
   end
-private
+
+  private
 
   def advertising_params
     params.require(:advertising).permit(:title, :text, :advertisings_type_id, images: [])
   end
-
 end

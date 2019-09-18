@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-      resources :advertisings_types
-      resources :advertisings
-      resources :users
+    resources :advertisings_types
+    resources :advertisings
+    resources :users
 
-      root to: "advertisings#index"
-    end
+    root to: 'advertisings#index'
+  end
 
   resources :users
 

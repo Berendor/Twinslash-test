@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class Advertising < ApplicationRecord
-
   include PgSearch
-  pg_search_scope :search_by_title_and_text, :against => [:title, :text],
-                   using: {:tsearch => {:prefix => true}}
-
+  pg_search_scope :search_by_title_and_text, against: %i[title text],
+                                             using: { tsearch: { prefix: true } }
 
   belongs_to :user
   has_many_attached :images
@@ -11,7 +11,6 @@ class Advertising < ApplicationRecord
   validates :title, presence: true,
                     length: { minimum: 2 }
   extend Enumerize
-  enumerize :status, in: [:draft, :new, :rejected,
-                          :approved, :published, :archival], default: :draft
-
+  enumerize :status, in: %i[draft new rejected
+                            approved published archival], default: :draft
 end
