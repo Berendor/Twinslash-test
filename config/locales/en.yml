@@ -31,3 +31,18 @@
 
 en:
   hello: "Hello world"
+  title: 'Title: '
+  type: 'Category: '
+  text: 'Description:'
+  back: 'Back'
+  home: 'Homepage'
+  admin: 'Admin'
+  search: 'Search'
+  ads: 'Advertising'
+  all_ads: 'All advertising'
+  new_ads: 'New advertising'
+  term: 'Enter search term'
+  profile: 'MY PROFILE'
+  listing: 'Listing all advertising'
+  open: 'Show'
+  out: 'Log Out'

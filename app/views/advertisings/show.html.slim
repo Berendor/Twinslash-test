@@ -1,16 +1,16 @@
 h2[align="center"]
-  | Title:
+  = t :title
   = @advertising.title
 .well.col-xs-8.col-xs-offset-2
   p
     | Email:
     = @advertising.user.email
   p
-    | Type:
+    = t :type
     = get_name_of_type(@types, @advertising.advertisings_type_id)
   h4.center
     strong
-      | Text:
+    = t :text
   = @advertising.text
   hr
   .row[align="center"]
@@ -24,6 +24,6 @@ h2[align="center"]
           / h2
           /   = link_to 'Remove', delete_image_attachment_advertising_url(image), method: :delete, data: { confirm: 'Are you sure?'}
   br
-  = link_to 'Back', advertisings_path, class: 'btn btn-primary btn-xs'
+  = link_to t(:back), advertisings_path, class: 'btn btn-primary btn-xs'
   - if @advertising.status['draft']
     = button_to "send", update_ad_advertising_path(@advertising), :method => :put, class: 'btn btn-primary btn-xs'
