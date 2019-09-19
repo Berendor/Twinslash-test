@@ -1,5 +1,5 @@
 h1[align="center"]
-  | Listing all advertising
+  = t(:listing)
 = render 'result_type'
 #blogpost-table
   - @advertisings.each do |advertising|
@@ -11,7 +11,7 @@ h1[align="center"]
           .advertising-body
             = truncate(advertising.text, length: 100)
           .advertising-actions
-            = link_to 'Show', advertising_path(advertising),class: 'btn btn-primary btn-xs'
+            = link_to t(:open), advertising_path(advertising),class: 'btn btn-primary btn-xs'
 div[align="center"]
   = will_paginate @advertising, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
 #search-results

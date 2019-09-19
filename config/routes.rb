@@ -1,25 +1,27 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  scope "(:locale)", locale: /en|ru/ do
+    devise_for :users
 
-  namespace :admin do
-    resources :advertisings_types
-    resources :advertisings
+    namespace :admin do
+      resources :advertisings_types
+      resources :advertisings
+      resources :users
+
+      root to: 'advertisings#index'
+    end
+
     resources :users
 
-    root to: 'advertisings#index'
-  end
-
-  resources :users
-
-  resources :advertisings do
-    member do
-      delete :delete_image_attachment
-      put :update_ad
+    resources :advertisings do
+      member do
+        delete :delete_image_attachment
+        put :update_ad
+      end
     end
+    get 'homepage/index'
+    root 'homepage#index'
   end
-  get 'homepage/index'
-  root 'homepage#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
