@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :advertisings_types
+    resources :advertisings
+    resources :users
+
+    root to: 'advertisings#index'
+  end
   scope "(:locale)", locale: /en|ru/ do
     devise_for :users
 
-    namespace :admin do
-      resources :advertisings_types
-      resources :advertisings
-      resources :users
-
-      root to: 'advertisings#index'
-    end
 
     resources :users
 
