@@ -46,3 +46,8 @@ en:
   listing: 'Listing all advertising'
   open: 'Show'
   out: 'Log Out'
+  edit: 'Edit'
+  delete: 'Delete'
+  sign_up: 'Sign up'
+  log_in: 'Log in'
+  update: 'Update'

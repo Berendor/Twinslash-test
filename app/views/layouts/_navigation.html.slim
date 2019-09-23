@@ -1,15 +1,11 @@
 nav.navbar.navbar-default
   .container-fluid
     .navbar-header
-      a.navbar-brand href="/" = t(:home)
+      = link_to t(:home), homepage_index_url, class: 'navbar-brand'
+      / a.navbar-brand href="/" = t(:home)
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li
-          a href="/admin" = t(:admin)
-        li
-          = form_tag(advertisings_path, method: "get", remote: true,) do
-            = text_field_tag :search, params[:search], placeholder: t(:term)
-            = submit_tag t(:search)
+        li= link_to t(:admin), admin_root_url
         li.dropdown
           a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             = t(:ads)
@@ -17,7 +13,7 @@ nav.navbar.navbar-default
           ul.dropdown-menu
             - if current_user
               li= link_to t(:new_ads), new_advertising_path
-            li= link_to t(:all_ads), '/advertisings'
+            li= link_to t(:all_ads), advertisings_url
             li
               a href="#"  Something else here
         li.nav-item
@@ -41,5 +37,5 @@ nav.navbar.navbar-default
                 a href="#"  Another action
         - else
           ul.nav.navbar-nav.navbar-right
-            li= link_to "Sign Up", new_user_registration_path
-            li= link_to "Log In", new_user_session_path
+            li= link_to t(:sign_up), new_user_registration_path
+            li= link_to t(:log_in), new_user_session_path

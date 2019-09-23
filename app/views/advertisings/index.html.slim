@@ -1,5 +1,9 @@
 h1[align="center"]
   = t(:listing)
+.form_search
+  = form_tag(advertisings_path, method: "get", remote: true,) do
+    = text_field_tag :search, params[:search], placeholder: t(:term)
+    = submit_tag t(:search), class: 'btn btn-primary'
 = render 'result_type'
 #blogpost-table
   - @advertisings.each do |advertising|
@@ -10,8 +14,11 @@ h1[align="center"]
             = link_to advertising.title, advertising_path(advertising)
           .advertising-body
             = truncate(advertising.text, length: 100)
+          .advertising-body
+            = t :type
+            = get_name_of_type(@types, advertising.advertisings_type_id)
           .advertising-actions
             = link_to t(:open), advertising_path(advertising),class: 'btn btn-primary btn-xs'
-div[align="center"]
-  = will_paginate @advertising, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
+  div[align="center"]
+    = will_paginate @advertising, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
 #search-results

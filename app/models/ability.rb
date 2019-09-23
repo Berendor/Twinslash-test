@@ -4,23 +4,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new role: 'unlogged'
-    can :read, Advertising
-
-    if user.role == 'user' # additional permissions for logged in users (they can read their own posts)
-      can :read, Advertising, user_id: user.id
-      can :read, User
-      can :manage, Advertising
-      cannot :create, User
-      cannot :create, AdvertisingsType
-    end
-
-    if user.role == 'admin' # additional permissions for administrators
-      can :manage, :all
+    if user.nil?
       can :read, Advertising
-      can :create, User
-      can :create, AdvertisingsType
-      cannot :create, Advertising
+    elsif user.role == 'admin'
+      can :read, Advertising
+      can :manage, AdvertisingsType
+      can :manage, User
+    else
+      can :read, User
+      can [:read, :create], Advertising
+      can [:update, :destroy], Advertising, :user_id => user.id
     end
   end
 end

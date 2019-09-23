@@ -21,6 +21,15 @@ img {
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.form_search {
+  text-align: center;
+  margin-bottom: 10px
+}
+
+.form-horizontal-category {
+  margin-left: 30%
+}
+
 .advertising-body {
  border-top: 1px solid #eaeaea;
  padding-top: 15px;
