@@ -25,5 +25,9 @@ h2[align="center"]
           /   = link_to 'Remove', delete_image_attachment_advertising_url(image), method: :delete, data: { confirm: 'Are you sure?'}
   br
   = link_to t(:back), advertisings_path, class: 'btn btn-primary btn-xs'
-  - if @advertising.status['draft']
+  - if can? :update, @advertising
+    = link_to t(:edit), edit_advertising_path(@advertising), class: 'btn btn-primary btn-xs'
+  - if can? :destroy, @advertising
+    = link_to t(:delete), @advertising, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-xs'
+  - if @advertising.status['draft'] || @advertising.status['rejected']
     = button_to "send", update_ad_advertising_path(@advertising), :method => :put, class: 'btn btn-primary btn-xs'

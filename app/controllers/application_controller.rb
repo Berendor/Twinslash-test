@@ -11,9 +11,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def creator
-    current_user.id == @advertising.user_id
-  end
   around_action :switch_locale
 
   def switch_locale(&action)

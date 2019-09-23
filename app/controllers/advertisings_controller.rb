@@ -26,18 +26,13 @@ class AdvertisingsController < ApplicationController
   end
 
   def edit
-    if creator
-      @advertising = Advertising.find(params[:id])
-      @types = AdvertisingsType.all
-    else
-      redirect_back(fallback_location: advertising_path)
-    end
+    @advertising = Advertising.find(params[:id])
+    @types = AdvertisingsType.all
   end
 
   def create
     @types = AdvertisingsType.all
     @advertising = Advertising.new(advertising_params)
-    @advertising.user = current_user
     if @advertising.save
       redirect_to @advertising
     else
@@ -56,13 +51,9 @@ class AdvertisingsController < ApplicationController
   end
 
   def destroy
-    if creator
-      @advertising = Advertising.find(params[:id])
-      @advertising.destroy
-      redirect_to advertisings_path
-    else
-      redirect_back(fallback_location: advertising_path)
-    end
+    @advertising = Advertising.find(params[:id])
+    @advertising.destroy
+    redirect_to advertisings_path
   end
 
   def delete_image_attachment
@@ -79,6 +70,7 @@ class AdvertisingsController < ApplicationController
   private
 
   def advertising_params
-    params.require(:advertising).permit(:title, :text, :advertisings_type_id, images: [])
+    params.require(:advertising).permit(:title, :text, :user_id,
+       :advertisings_type_id, images: []).merge(user_id: current_user.id)
   end
 end
