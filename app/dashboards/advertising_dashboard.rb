@@ -15,6 +15,7 @@ class AdvertisingDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     text: Field::Text,
+    cause: Field::Text,
     advertisings_type_id: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -49,6 +50,7 @@ class AdvertisingDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    cause
     status
   ].freeze
 

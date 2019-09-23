@@ -6,6 +6,7 @@ class Advertising < ApplicationRecord
                                              using: { tsearch: { prefix: true } }
 
   belongs_to :user
+  belongs_to :advertisings_type
   has_many_attached :images
   validates :user_id, :text, :advertisings_type_id, presence: true
   validates :title, presence: true,

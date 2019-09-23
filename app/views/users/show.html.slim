@@ -8,6 +8,8 @@
           = truncate(advertising.text, length: 100)
         .advertising-body
           = truncate(advertising.status)
+        .advertising-body
+          = truncate(advertising.cause)
         .advertising-actions
           = link_to 'Show', advertising_path(advertising),class: 'btn btn-primary btn-xs'
           - if current_user

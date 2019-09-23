@@ -16,7 +16,7 @@ h1[align="center"]
             = truncate(advertising.text, length: 100)
           .advertising-body
             = t :type
-            = get_name_of_type(@types, advertising.advertisings_type_id)
+            = get_name_of_type( advertising.advertisings_type_id)
           .advertising-actions
             = link_to t(:open), advertising_path(advertising),class: 'btn btn-primary btn-xs'
   div[align="center"]

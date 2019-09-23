@@ -3,7 +3,6 @@
 class AdvertisingsController < ApplicationController
   load_and_authorize_resource
   def index
-    @types = AdvertisingsType.all
     @q = Advertising.ransack(params[:q])
     if params[:search]
       @search_results_advertisings = Advertising.search_by_title_and_text(params[:search])
@@ -11,13 +10,12 @@ class AdvertisingsController < ApplicationController
         format.js { render partial: 'search-results' }
       end
     else
-      @advertisings = @q.result.where(status: 'published').paginate(page: params[:page], per_page: 4)
+      @advertisings = @q.result.where(status: 'published').includes(:advertisings_type).paginate(page: params[:page], per_page: 4)
     end
   end
 
   def show
     @advertising = Advertising.find(params[:id])
-    @types = AdvertisingsType.all
   end
 
   def new
@@ -31,7 +29,6 @@ class AdvertisingsController < ApplicationController
   end
 
   def create
-    @types = AdvertisingsType.all
     @advertising = Advertising.new(advertising_params)
     if @advertising.save
       redirect_to @advertising
@@ -42,7 +39,6 @@ class AdvertisingsController < ApplicationController
 
   def update
     @advertising = Advertising.find(params[:id])
-    @types = AdvertisingsType.all
     if @advertising.update(advertising_params)
       redirect_to @advertising
     else
