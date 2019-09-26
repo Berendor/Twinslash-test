@@ -7,7 +7,7 @@ h2[align="center"]
     = @advertising.user.email
   p
     = t :type
-    = get_name_of_type(@advertising.advertisings_type_id)
+    = truncate(@advertising.advertisings_type.name)
   h4.center
     strong
     = t :text
